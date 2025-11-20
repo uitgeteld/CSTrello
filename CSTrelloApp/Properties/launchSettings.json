@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CSTrelloApp (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "CSTrelloApp (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
