@@ -14,6 +14,16 @@
     </Window.SystemBackdrop>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <SelectorBar x:Name="contentSelectorBar" Grid.Row="0" SelectionChanged="contentSelectorBar_SelectionChanged">
+            <SelectorBarItem x:Name="overviewSelectorBarItem" Text="Overview"/>
+            <SelectorBarItem x:Name="createSelectorBarItem" Text="Create"/>
+        </SelectorBar>
+        <Frame x:Name="contentFrame" Grid.Row="1">
+        </Frame>
 
     </Grid>
 </Window>
