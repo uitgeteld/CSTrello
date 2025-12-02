@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 using CSTrelloApi.Data;
+using Task = CSTrelloApi.Data.Task;
 
 namespace CSTrelloApi
 {
@@ -43,7 +44,7 @@ namespace CSTrelloApi
                     var form = request.InputStream;
                     var reader = new System.IO.StreamReader(form);
                     var body = reader.ReadToEnd();
-                    var task = JsonSerializer.Deserialize<Tasks>(body);
+                    var task = JsonSerializer.Deserialize<Task>(body);
                     db.Tasks.Add(task);
                     db.SaveChanges();
                     response.StatusCode = 201;
@@ -57,7 +58,7 @@ namespace CSTrelloApi
                     var form = request.InputStream;
                     var reader = new System.IO.StreamReader(form);
                     var body = reader.ReadToEnd();
-                    var task = JsonSerializer.Deserialize<Tasks>(body);
+                    var task = JsonSerializer.Deserialize<Task>(body);
                     if (task == null)
                     {
                         response.StatusCode = 404;
