@@ -1,13 +1,13 @@
-﻿using CSTrelloApi.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Task = CSTrelloApi.Data.Task;
 
 namespace CSTrelloApi;
 
 public class AppDbContext:DbContext
 {
-    public DbSet<Tasks> Tasks { get; set; }
+    public DbSet<Task> Tasks { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseMySql("server=localhost;port=3306;database=Vehicles;user=root;password=;",ServerVersion.Parse("8.0.30"));
+        optionsBuilder.UseMySql("server=localhost;port=3306;database=Trello;user=root;password=;",ServerVersion.Parse("8.0.30"));
     }
 }
