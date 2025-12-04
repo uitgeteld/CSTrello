@@ -34,6 +34,10 @@ namespace CSTrelloApp
             {
                 contentFrame.Navigate(typeof(CreatePage), contentFrame);
             }
+            else if (selectedItem == overviewSelectorBarItem)
+            {
+                contentFrame.Navigate(typeof(OverviewPage), contentFrame);
+            }
         }
     }
 }

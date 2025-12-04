@@ -25,19 +25,20 @@ namespace CSTrelloApi
             HttpListenerRequest request = context.Request;
             HttpListenerResponse response = context.Response;
             string responseString = "";
+
             if (request.Url.AbsolutePath == "/all")
             {
                 using (var db = new AppDbContext())
                 {
                     var tasks = db.Tasks.ToList();
-                    responseString = "<html><body><h1>All Cars</h1><ul>";
+                    responseString = "<html><body><h1>All Cars</h1><ul>"; // Waarom cars??
                     foreach (var task in tasks)
                     {
                         responseString += $"<li>{task.Id} {task.Title} ({task.AssignedTo}) - {task.Description} - {task.Status}</li>";
                     }
                     responseString += "</ul></body></html>";
                 }
-            }else if (request.Url.AbsolutePath == "/add"&& request.HttpMethod == "POST")
+            }else if (request.Url.AbsolutePath == "/add" && request.HttpMethod == "POST")
             {
                 using (var db = new AppDbContext())
                 {

@@ -10,8 +10,10 @@
 
     <StackPanel>
         <TextBlock Text="Create new task" FontSize="24" FontWeight="Bold" Margin="10"/>
-        <TextBox x:Name="TaskTitleTextBox" PlaceholderText="Task Title" Margin="10"/>
-        <TextBox x:Name="TaskDescriptionTextBox" PlaceholderText="Task Description" Margin="10" AcceptsReturn="True" Height="100"/>
-        <ComboBox x:Name="TaskPriorityComboBox" Margin="10" PlaceholderText="Select user"></ComboBox>
+        <TextBox x:Name="TaskTitle" PlaceholderText="Task Title" Margin="10"/>
+        <TextBox x:Name="TaskDescription" PlaceholderText="Task Description" Margin="10" AcceptsReturn="True" Height="100"/>
+        <ComboBox x:Name="UserSelection" Margin="10" PlaceholderText="Select user"/>
+        <Button Content="Create Task" Margin="10" Click="CreateTaskButton_Click"/>
+        <TextBlock x:Name="errorsTextBlock"/>
     </StackPanel>
 </Page>
