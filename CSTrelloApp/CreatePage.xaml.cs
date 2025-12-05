@@ -8,12 +8,16 @@ using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
+using System.Net;
+using System.Net.Http;
+using System.Text.Json;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -28,12 +32,25 @@ namespace CSTrelloApp
         public CreatePage()
         {
             InitializeComponent();
-            UserSelection.Items.Add("Swen");
-            UserSelection.Items.Add("Roy");
-            UserSelection.Items.Add("Jason");
-            UserSelection.Items.Add("Martijn");
+
+            HttpClient client = new HttpClient();
+            string apiUrl = "http://localhost:8080/users/";
+            var response = client.GetAsync(apiUrl).Result;
+
+            if(response.StatusCode == HttpStatusCode.OK)
+            {
+                List<Data.User> users = JsonSerializer.Deserialize<List<Data.User>>(response.Content.ReadAsStringAsync().Result);
+
+                foreach (var user in users)
+                {
+                    UserSelection.Items.Add(user.Name);
+                }
+            }
+
+            
         }
 
+        [RequiresUnreferencedCode("Calls System.ComponentModel.DataAnnotations.ValidationContext.ValidationContext(Object)")]
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             var task  = new Data.Task
