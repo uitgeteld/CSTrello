@@ -6,6 +6,7 @@ namespace CSTrelloApi;
 public class AppDbContext:DbContext
 {
     public DbSet<Task> Tasks { get; set; }
+    public DbSet<Data.User> Users { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseMySql("server=localhost;port=3306;database=Trello;user=root;password=;",ServerVersion.Parse("8.0.30"));
