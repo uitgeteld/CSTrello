@@ -27,6 +27,7 @@ namespace CSTrelloApi
             HttpListenerRequest request = context.Request;
             HttpListenerResponse response = context.Response;
             string responseString = "";
+
             if (request.Url.AbsolutePath == "/all")
             {
                 using (var db = new AppDbContext())

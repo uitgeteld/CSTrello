@@ -27,5 +27,17 @@ namespace CSTrelloApp
         {
             InitializeComponent();
         }
+        private void contentSelectorBar_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
+        {
+            SelectorBarItem selectedItem = sender.SelectedItem;
+            if (selectedItem == createSelectorBarItem)
+            {
+                contentFrame.Navigate(typeof(CreatePage), contentFrame);
+            }
+            else if (selectedItem == overviewSelectorBarItem)
+            {
+                contentFrame.Navigate(typeof(OverviewPage), contentFrame);
+            }
+        }
     }
 }
