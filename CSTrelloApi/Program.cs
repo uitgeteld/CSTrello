@@ -58,18 +58,18 @@ namespace CSTrelloApi
                             db.Tasks.Update(taskFromDb);
                             db.SaveChanges();
                             response.StatusCode = 201;
-                            return;
+                            continue;
                         }else
                         {
                             response.StatusCode = 404;
-                            return;
+                            continue;
                         }
 
                     }
                     else
                     {
                         response.StatusCode = 404;
-                        return;
+                        continue;
                     }
 
                 }
@@ -85,12 +85,13 @@ namespace CSTrelloApi
                     if (task == null)
                     {
                         response.StatusCode = 404;
-                        return;
+                        continue;
                     }
                     db.Tasks.Add(task);
                     db.SaveChanges();
                     response.StatusCode = 201;
-                    return;
+                    continue;
+                    continue;
                 }
                 
 
@@ -105,7 +106,7 @@ namespace CSTrelloApi
                     if (task == null)
                     {
                         response.StatusCode = 404;
-                        return;
+                        continue;
                     }
                     var taskToRemove = db.Tasks.Find(task.Id);
                     if (taskToRemove != null)
@@ -113,12 +114,12 @@ namespace CSTrelloApi
                         db.Tasks.Remove(taskToRemove);
                         db.SaveChanges();
                         response.StatusCode = 200;
-                        return;
+                        continue;
                     }
                     else
                     {
                         response.StatusCode = 404;
-                        return;
+                        continue;
                     }
                 }
             }else if ( request.Url.AbsolutePath == "/users")
@@ -144,7 +145,7 @@ namespace CSTrelloApi
                     if (user == null)
                     {
                         response.StatusCode = 404;
-                        return;
+                        continue;
                     }
                     user.Password = BCryptHelper.HashPassword(user.Password, BCryptHelper.GenerateSalt());
                     db.Users.Add(user);
@@ -162,7 +163,7 @@ namespace CSTrelloApi
                     if (user == null)
                     {
                         response.StatusCode = 404;
-                        return;
+                        continue;
                     }
                     bool isPasswordValid = false;
                     var userFromDb = db.Users.FirstOrDefault(u => u.Id == user.Id);
@@ -170,14 +171,14 @@ namespace CSTrelloApi
                     {
                         isPasswordValid = BCryptHelper.CheckPassword(user.Password, userFromDb.Password);
                         response.StatusCode = isPasswordValid ? 201 : 404;
-                        return;
+                        continue;
                     }
                 }
             } else
             {
                 responseString = "<html><body>404 Not Found</body></html>";
                 response.StatusCode = 404;
-                return;
+                continue;
             }
             byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
             response.ContentLength64 = buffer.Length;
