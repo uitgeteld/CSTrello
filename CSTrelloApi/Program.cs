@@ -77,7 +77,7 @@ namespace CSTrelloApi
 
                 }
                 
-            }else if (request.Url.AbsolutePath == "/add"&& request.HttpMethod == "POST")
+            }else if (request.Url.AbsolutePath == "/create"&& request.HttpMethod == "POST")
             {
                 using (var db = new AppDbContext())
                 {
@@ -92,7 +92,7 @@ namespace CSTrelloApi
                 }
                 
 
-            }else if (request.Url.AbsolutePath == "/remove" && request.HttpMethod == "DELETE")
+            }else if (request.Url.AbsolutePath == "/delete" && request.HttpMethod == "DELETE")
             {
                 using (var db = new AppDbContext())
                 {
