@@ -33,12 +33,10 @@ namespace CSTrelloApi
                 using (var db = new AppDbContext())
                 {
                     var tasks = db.Tasks.ToList();
-                    responseString = "<html><body><h1>All Tasks</h1><ul>";
                     foreach (var task in tasks)
                     {
-                        responseString += $"<li>{task.Id} {task.Title} ({task.AssignedTo}) - {task.Description} - {task.Status}</li>";
+                        responseString += JsonSerializer.Serialize<Task>(task);
                     }
-                    responseString += "</ul></body></html>";
                 }
             }else if(request.Url.AbsolutePath == "Edit" && request.HttpMethod == "POST"){
                 
@@ -61,8 +59,7 @@ namespace CSTrelloApi
                             db.SaveChanges();
                             response.StatusCode = 201;
                             return;
-                        }
-                        else
+                        }else
                         {
                             response.StatusCode = 404;
                             return;
@@ -85,6 +82,11 @@ namespace CSTrelloApi
                     var reader = new System.IO.StreamReader(form);
                     var body = reader.ReadToEnd();
                     var task = JsonSerializer.Deserialize<Task>(body);
+                    if (task == null)
+                    {
+                        response.StatusCode = 404;
+                        return;
+                    }
                     db.Tasks.Add(task);
                     db.SaveChanges();
                     response.StatusCode = 201;
@@ -124,12 +126,11 @@ namespace CSTrelloApi
                 using(var db = new AppDbContext())
                 {
                     var users = db.Users.ToList();
-                    responseString = "<html><body><h1>All Users</h1><ul>";
+
                     foreach (var user in users)
                     {
-                        responseString += $"<li>{user.Name}</li>";
+                        responseString += JsonSerializer.Serialize<User>(user);
                     }
-                    responseString += "</ul></body></html>";
                 }
                 
             } else if (request.Url.AbsolutePath == "/register" && request.HttpMethod == "POST")
