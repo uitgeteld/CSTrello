@@ -33,10 +33,9 @@ namespace CSTrelloApi
                 using (var db = new AppDbContext())
                 {
                     var tasks = db.Tasks.ToList();
-                    foreach (var task in tasks)
-                    {
-                        responseString += JsonSerializer.Serialize<Task>(task);
-                    }
+
+                    responseString += JsonSerializer.Serialize(tasks);
+
                 }
             }else if(request.Url.AbsolutePath == "Edit" && request.HttpMethod == "POST"){
                 
@@ -127,11 +126,7 @@ namespace CSTrelloApi
                 using(var db = new AppDbContext())
                 {
                     var users = db.Users.ToList();
-
-                    foreach (var user in users)
-                    {
-                        responseString += JsonSerializer.Serialize<User>(user);
-                    }
+                    responseString += JsonSerializer.Serialize(users);
                 }
                 
             } else if (request.Url.AbsolutePath == "/register" && request.HttpMethod == "POST")
