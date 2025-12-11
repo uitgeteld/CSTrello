@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="CSTrelloApp.CreatePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -8,12 +7,81 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel>
-        <TextBlock Text="Create new task" FontSize="24" FontWeight="Bold" Margin="10"/>
-        <TextBox x:Name="TaskTitle" PlaceholderText="Task Title" Margin="10"/>
-        <TextBox x:Name="TaskDescription" PlaceholderText="Task Description" Margin="10" AcceptsReturn="True" Height="100"/>
-        <ComboBox x:Name="UserSelection" Margin="10" PlaceholderText="Select user"/>
-        <Button Content="Create Task" Margin="10" Click="CreateTaskButton_Click"/>
-        <TextBlock x:Name="errorsTextBlock"/>
-    </StackPanel>
+    <Page.Resources>
+
+        <!-- Global colors for easy adjustment -->
+        <SolidColorBrush x:Key="BgDark" Color="#1E1E1E"/>
+        <SolidColorBrush x:Key="PanelDark" Color="#252525"/>
+        <SolidColorBrush x:Key="InputBg" Color="#333333"/>
+        <SolidColorBrush x:Key="BorderLight" Color="#434343"/>
+        <SolidColorBrush x:Key="TextLight" Color="#EDEDED"/>
+        <SolidColorBrush x:Key="Accent" Color="#4F8DFF"/>
+
+        <!-- Minimalist textboxes -->
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="{StaticResource InputBg}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextLight}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderLight}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0,8,0,8"/>
+        </Style>
+
+        <!-- Minimalist combobox -->
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="{StaticResource InputBg}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextLight}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderLight}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0,8,0,8"/>
+        </Style>
+
+        <!-- Clean flat button -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource Accent}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="Margin" Value="0,15,0,0"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+    </Page.Resources>
+
+    <Grid Background="{StaticResource BgDark}">
+        <StackPanel
+            Background="{StaticResource PanelDark}"
+            Padding="30"
+            Width="420"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            CornerRadius="6">
+
+            <TextBlock Text="Create New Task"
+                       FontSize="26"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource TextLight}"
+                       Margin="0,0,0,20"/>
+
+            <TextBox x:Name="TaskTitle" PlaceholderText="Task Title"/>
+
+            <TextBox x:Name="TaskDescription"
+                     PlaceholderText="Task Description"
+                     AcceptsReturn="True"
+                     Height="120"/>
+
+            <ComboBox x:Name="UserSelection"
+                      PlaceholderText="Select user"/>
+
+            <Button Content="Create Task"
+                    Click="CreateTaskButton_Click"/>
+
+            <TextBlock x:Name="errorsTextBlock"
+                       Foreground="#FF5555"
+                       Margin="0,10,0,0"/>
+        </StackPanel>
+    </Grid>
 </Page>

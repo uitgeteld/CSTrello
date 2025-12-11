@@ -1,0 +1,16 @@
+[
+  {
+    "Name": "Both API + WINUI",
+    "Projects": [
+      {
+        "Path": "CSTrelloApp.csproj",
+        "Action": "Start",
+        "DebugTarget": "CSTrelloApp (Package)"
+      },
+      {
+        "Path": "..\\CSTrelloApi\\CSTrelloApi.csproj",
+        "Action": "StartWithoutDebugging"
+      }
+    ]
+  }
+]
