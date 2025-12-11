@@ -51,7 +51,6 @@ namespace CSTrelloApp
                 
                 if (tasks == null)
                 {
-                    // Try single object if array deserialization failed
                     var single = JsonSerializer.Deserialize<Data.Task>(json, options);
                     if (single != null)
                     {
@@ -65,7 +64,6 @@ namespace CSTrelloApp
                     return;
                 }
 
-                // Clear existing and distribute tasks to columns
                 await DispatcherQueue.EnqueueAsync(() =>
                 {
                     _toDo.Clear();
@@ -76,25 +74,24 @@ namespace CSTrelloApp
                     foreach (var t in tasks)
                     {
                         var status = (t.Status ?? string.Empty).Trim().ToLowerInvariant();
-                        if (status == "to do" || status == "todo")
+                        if (status == "todo")
                         {
                             _toDo.Add(t);
                         }
-                        else if (status == "in progress" || status == "doing")
+                        else if (status == "doing")
                         {
                             _doing.Add(t);
                         }
-                        else if (status == "in review" || status == "review")
+                        else if (status == "review")
                         {
                             _inReview.Add(t);
                         }
-                        else if (status == "completed" || status == "done")
+                        else if (status == "done")
                         {
                             _done.Add(t);
                         }
                         else
                         {
-                            // Unknown status -> put in ToDo by default
                             _toDo.Add(t);
                         }
                     }
@@ -117,9 +114,16 @@ namespace CSTrelloApp
                 await DispatcherQueue.EnqueueAsync(() => ErrorTextBlock.Text = $"Unexpected error: {ex.Message}");
             }
         }
+
+        private void EditTask_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is int taskId)
+            {
+                MainWindow.ContentFrame.Navigate(typeof(UpdatePage), taskId);
+            }
+        }
     }
 
-    // Helper extension to marshal to UI thread
     internal static class DispatcherQueueExtensions
     {
         public static System.Threading.Tasks.Task EnqueueAsync(this Microsoft.UI.Dispatching.DispatcherQueue queue, Action action)

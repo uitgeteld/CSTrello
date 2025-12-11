@@ -23,20 +23,27 @@ namespace CSTrelloApp
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        public static Frame ContentFrame;
         public MainWindow()
         {
             InitializeComponent();
+            ContentFrame = contentFrame;
+            if (contentFrame != null) contentFrame.Navigate(typeof(OverviewPage));
         }
         private void contentSelectorBar_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
         {
-            SelectorBarItem selectedItem = sender.SelectedItem;
-            if (selectedItem == createSelectorBarItem)
+            SelectorBarItem selectedItem = sender.SelectedItem as SelectorBarItem;
+            if (selectedItem != null && contentFrame != null)
             {
-                contentFrame.Navigate(typeof(CreatePage), contentFrame);
-            }
-            else if (selectedItem == overviewSelectorBarItem)
-            {
-                contentFrame.Navigate(typeof(OverviewPage), contentFrame);
+
+                if (selectedItem == createSelectorBarItem)
+                {
+                    contentFrame.Navigate(typeof(CreatePage));
+                }
+                else if (selectedItem == overviewSelectorBarItem)
+                {
+                    contentFrame.Navigate(typeof(OverviewPage));
+                }
             }
         }
     }

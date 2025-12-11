@@ -37,7 +37,7 @@ namespace CSTrelloApi
                         responseString += JsonSerializer.Serialize(tasks);
 
                     }
-                }else if(request.Url.AbsolutePath == "Edit" && request.HttpMethod == "POST"){
+                }else if(request.Url.AbsolutePath == "/update" && request.HttpMethod == "POST"){
                     
                     using (var db = new AppDbContext())
                     {
@@ -73,7 +73,7 @@ namespace CSTrelloApi
 
                     }
                     
-                }else if (request.Url.AbsolutePath == "/create"&& request.HttpMethod == "POST")
+                }else if (request.Url.AbsolutePath == "/create" && request.HttpMethod == "POST")
                 {
                     using (var db = new AppDbContext())
                     {

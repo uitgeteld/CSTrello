@@ -15,6 +15,7 @@
   <ItemGroup>
     <None Remove="CreatePage.xaml" />
     <None Remove="OverviewPage.xaml" />
+    <None Remove="UpdatePage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +44,11 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.7175" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.251106002" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UpdatePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="OverviewPage.xaml">

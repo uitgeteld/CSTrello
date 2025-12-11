@@ -1,57 +1,93 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.System;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using CSTrelloApp.Data;
 
 namespace CSTrelloApp
 {
-/// <summary>
-/// An empty page that can be used on its own or navigated to within a Frame.
-/// </summary>
-public sealed partial class CreatePage : Page
-{
-    public CreatePage()
+    public sealed partial class UpdatePage : Page
     {
-        InitializeComponent();
+        private int id = 0;
 
-        HttpClient client = new HttpClient();
-        string apiUrl = "http://localhost:8080/users";
-        var response = client.GetAsync(apiUrl).Result;
-
-        if (response.StatusCode == HttpStatusCode.OK)
+        public UpdatePage()
         {
-            List<Data.User> users = JsonSerializer.Deserialize<List<Data.User>>(response.Content.ReadAsStringAsync().Result);
-
-            foreach (var user in users)
+            InitializeComponent();
+            HttpClient client = new HttpClient();
+            string apiUrl = "http://localhost:8080/users";
+            var response = client.GetAsync(apiUrl).Result;
+            if (response.StatusCode == HttpStatusCode.OK)
             {
-                UserSelection.Items.Add(user.Name);
+                List<Data.User> users = JsonSerializer.Deserialize<List<Data.User>>(response.Content.ReadAsStringAsync().Result);
+                foreach (var user in users)
+                {
+                    UserSelection.Items.Add(user.Name);
+                }
             }
         }
-    }
-        [RequiresUnreferencedCode("Calls System.ComponentModel.DataAnnotations.ValidationContext.ValidationContext(Object)")]
-        private async void CreateTaskButton_Click(object sender, RoutedEventArgs e)
-        {
 
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            // Validate ID
+            if (e.Parameter is not int passedId || passedId == 0)
+            {
+                errorsTextBlock.Text = "No valid ID provided for update.";
+                return;
+            }
+
+            this.id = passedId;
+
+            // Load task directly in OnNavigatedTo
+            try
+            {
+                using var client = new HttpClient();
+                string apiUrl = "http://localhost:8080/all";
+
+                var response = await client.GetAsync(apiUrl);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    var tasks = JsonSerializer.Deserialize<List<Data.Task>>(json);
+
+                    var task = tasks?.FirstOrDefault(t => t.Id == id);
+
+                    if (task != null)
+                    {
+                        TaskTitle.Text = task.Title ?? "";
+                        TaskDescription.Text = task.Description ?? "";
+                        UserSelection.SelectedItem = task.AssignedTo;
+                    }
+                    else
+                    {
+                        errorsTextBlock.Text = "Task not found.";
+                    }
+                }
+                else
+                {
+                    errorsTextBlock.Text = "Failed to load task data.";
+                }
+            }
+            catch (Exception ex)
+            {
+                errorsTextBlock.Text = $"Error loading task: {ex.Message}";
+            }
+        }
+
+        [RequiresUnreferencedCode("Calls System.ComponentModel.DataAnnotations.ValidationContext.ValidationContext(Object)")]
+        private async void UpdateTaskButton_Click(object sender, RoutedEventArgs e)
+        {
             if (string.IsNullOrWhiteSpace(TaskTitle.Text))
             {
                 errorsTextBlock.Text = "Title is required for a task";
@@ -59,6 +95,7 @@ public sealed partial class CreatePage : Page
 
             var task = new Data.Task
             {
+                Id = this.id,
                 Title = TaskTitle.Text,
                 Description = TaskDescription.Text,
                 AssignedTo = UserSelection.SelectedItem?.ToString() ?? "",
@@ -82,8 +119,7 @@ public sealed partial class CreatePage : Page
                 try
                 {
                     using var client = new HttpClient();
-                    string apiUrl = "http://localhost:8080/create";
-
+                    string apiUrl = "http://localhost:8080/update";
                     var jsonContent = new StringContent(JsonSerializer.Serialize(task), System.Text.Encoding.UTF8, "application/json");
                     var response = await client.PostAsync(apiUrl, jsonContent);
                     MainWindow.ContentFrame.Navigate(typeof(OverviewPage));

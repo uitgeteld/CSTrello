@@ -9,6 +9,48 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <DataTemplate x:Key="TaskItemTemplate" x:DataType="data:Task">
+            <Border Padding="8" Margin="0,0,0,8" CornerRadius="6" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" 
+                               Text="{x:Bind Title}" 
+                               FontWeight="Bold"
+                               TextWrapping="Wrap"/>
+
+                    <TextBlock Grid.Row="1" 
+                               Text="{x:Bind Description}" 
+                               TextWrapping="Wrap" 
+                               MaxLines="2" 
+                               FontSize="12" 
+                               Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"
+                               Margin="0,4,0,0"/>
+
+                    <TextBlock Grid.Row="2" 
+                               Text="{x:Bind AssignedTo}" 
+                               FontSize="12" 
+                               Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"
+                               Margin="0,4,0,0"/>
+
+                    <Button Grid.Row="3" 
+                            Content="Edit" 
+                            Tag="{x:Bind Id}"
+                            Click="EditTask_Click"
+                            HorizontalAlignment="Right"
+                            Margin="0,8,0,0"
+                            Padding="12,4"
+                            FontSize="12"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
     <Grid Padding="12" RowSpacing="8">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -25,77 +67,61 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- To Do -->
-            <StackPanel Grid.Column="0">
-                <TextBlock Text="To Do" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,8"/>
-                <ListView x:Name="ToDoList" SelectionMode="None" IsItemClickEnabled="False">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="data:Task">
-                            <Border Padding="8" Margin="0,0,0,8" CornerRadius="6" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                                <StackPanel>
-                                    <TextBlock Text="{x:Bind Title}" FontWeight="Bold"/>
-                                    <TextBlock Text="{x:Bind Description}" TextWrapping="Wrap" MaxLines="2" FontSize="12" Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"/>
-                                    <TextBlock Text="{x:Bind AssignedTo}" FontSize="12" Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"/>
-                                </StackPanel>
-                            </Border>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="To Do" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <ListView x:Name="ToDoList" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="False"
+                              ItemTemplate="{StaticResource TaskItemTemplate}"/>
+                </ScrollViewer>
+            </Grid>
 
-            <!-- Doing -->
-            <StackPanel Grid.Column="1">
-                <TextBlock Text="Doing" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,8"/>
-                <ListView x:Name="DoingList" SelectionMode="None" IsItemClickEnabled="False">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="data:Task">
-                            <Border Padding="8" Margin="0,0,0,8" CornerRadius="6" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                                <StackPanel>
-                                    <TextBlock Text="{x:Bind Title}" FontWeight="Bold"/>
-                                    <TextBlock Text="{x:Bind Description}" TextWrapping="Wrap" MaxLines="2" FontSize="12" Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"/>
-                                    <TextBlock Text="{x:Bind AssignedTo}" FontSize="12" Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"/>
-                                </StackPanel>
-                            </Border>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Doing" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <ListView x:Name="DoingList" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="False"
+                              ItemTemplate="{StaticResource TaskItemTemplate}"/>
+                </ScrollViewer>
+            </Grid>
 
-            <!-- In Review -->
-            <StackPanel Grid.Column="2">
-                <TextBlock Text="In Review" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,8"/>
-                <ListView x:Name="InReviewList" SelectionMode="None" IsItemClickEnabled="False">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="data:Task">
-                            <Border Padding="8" Margin="0,0,0,8" CornerRadius="6" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                                <StackPanel>
-                                    <TextBlock Text="{x:Bind Title}" FontWeight="Bold"/>
-                                    <TextBlock Text="{x:Bind Description}" TextWrapping="Wrap" MaxLines="2" FontSize="12" Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"/>
-                                    <TextBlock Text="{x:Bind AssignedTo}" FontSize="12" Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"/>
-                                </StackPanel>
-                            </Border>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="In Review" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <ListView x:Name="InReviewList" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="False"
+                              ItemTemplate="{StaticResource TaskItemTemplate}"/>
+                </ScrollViewer>
+            </Grid>
 
-            <!-- Done -->
-            <StackPanel Grid.Column="3">
-                <TextBlock Text="Done" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,8"/>
-                <ListView x:Name="DoneList" SelectionMode="None" IsItemClickEnabled="False">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="data:Task">
-                            <Border Padding="8" Margin="0,0,0,8" CornerRadius="6" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                                <StackPanel>
-                                    <TextBlock Text="{x:Bind Title}" FontWeight="Bold"/>
-                                    <TextBlock Text="{x:Bind Description}" TextWrapping="Wrap" MaxLines="2" FontSize="12" Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"/>
-                                    <TextBlock Text="{x:Bind AssignedTo}" FontSize="12" Foreground="{ThemeResource SystemControlForegroundBaseLowBrush}"/>
-                                </StackPanel>
-                            </Border>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
+            <Grid Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Done" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <ListView x:Name="DoneList" 
+                              SelectionMode="None" 
+                              IsItemClickEnabled="False"
+                              ItemTemplate="{StaticResource TaskItemTemplate}"/>
+                </ScrollViewer>
+            </Grid>
         </Grid>
     </Grid>
 </Page>
