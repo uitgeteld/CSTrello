@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{06FD93A9-D010-434D-80FB-0414109FDFEF}|CSTrelloApp.csproj|c:\\users\\gebruiker\\source\\repos\\cstrello\\cstrelloapp\\updatepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{06FD93A9-D010-434D-80FB-0414109FDFEF}|CSTrelloApp.csproj|solutionrelative:updatepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06FD93A9-D010-434D-80FB-0414109FDFEF}|CSTrelloApp.csproj|c:\\users\\gebruiker\\source\\repos\\cstrello\\cstrelloapp\\updatepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06FD93A9-D010-434D-80FB-0414109FDFEF}|CSTrelloApp.csproj|solutionrelative:updatepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{06FD93A9-D010-434D-80FB-0414109FDFEF}|CSTrelloApp.csproj|c:\\users\\gebruiker\\source\\repos\\cstrello\\cstrelloapp\\overviewpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{06FD93A9-D010-434D-80FB-0414109FDFEF}|CSTrelloApp.csproj|solutionrelative:overviewpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -77,11 +85,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "UpdatePage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\UpdatePage.xaml.cs",
+              "RelativeDocumentMoniker": "UpdatePage.xaml.cs",
+              "ToolTip": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\UpdatePage.xaml.cs",
+              "RelativeToolTip": "UpdatePage.xaml.cs",
+              "ViewState": "AgIAAMkAAAAAAAAAAAAiwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T07:43:51.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UpdatePage.xaml",
+              "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\UpdatePage.xaml",
+              "RelativeDocumentMoniker": "UpdatePage.xaml",
+              "ToolTip": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\UpdatePage.xaml",
+              "RelativeToolTip": "UpdatePage.xaml",
+              "ViewState": "AgIAADEAAAAAAAAAAAAvwDQAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-12-12T07:43:47.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApi\\AppDbContext.cs",
               "RelativeDocumentMoniker": "..\\CSTrelloApi\\AppDbContext.cs",
@@ -89,25 +123,23 @@
               "RelativeToolTip": "..\\CSTrelloApi\\AppDbContext.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-09T14:58:48.713Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-09T14:58:48.713Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CSTrelloApi",
+              "DocumentIndex": 9,
+              "Title": "CSTrelloApi.csproj",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApi\\CSTrelloApi.csproj",
               "RelativeDocumentMoniker": "..\\CSTrelloApi\\CSTrelloApi.csproj",
               "ToolTip": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApi\\CSTrelloApi.csproj",
               "RelativeToolTip": "..\\CSTrelloApi\\CSTrelloApi.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-12-09T14:48:31.032Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-09T14:48:31.032Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\Data\\User.cs",
               "RelativeDocumentMoniker": "Data\\User.cs",
@@ -115,12 +147,11 @@
               "RelativeToolTip": "Data\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T09:55:03.623Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-04T09:55:03.623Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "OverviewPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\OverviewPage.xaml.cs",
               "RelativeDocumentMoniker": "OverviewPage.xaml.cs",
@@ -133,7 +164,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "OverviewPage.xaml",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\OverviewPage.xaml",
               "RelativeDocumentMoniker": "OverviewPage.xaml",
@@ -141,12 +172,11 @@
               "RelativeToolTip": "OverviewPage.xaml",
               "ViewState": "AgIAAB4AAAAAAAAAAADwv2UAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-04T08:57:12.538Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-04T08:57:12.538Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApi\\Program.cs",
               "RelativeDocumentMoniker": "..\\CSTrelloApi\\Program.cs",
@@ -154,12 +184,11 @@
               "RelativeToolTip": "..\\CSTrelloApi\\Program.cs",
               "ViewState": "AgIAAJMAAAAAAAAAAAAQwJUAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T08:38:55.092Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-04T08:38:55.092Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "CreatePage.g.cs",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\obj\\x64\\Release\\net8.0-windows10.0.19041.0\\win-x64\\CreatePage.g.cs",
               "RelativeDocumentMoniker": "obj\\x64\\Release\\net8.0-windows10.0.19041.0\\win-x64\\CreatePage.g.cs",
@@ -171,7 +200,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "CreatePage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\CreatePage.xaml.cs",
               "RelativeDocumentMoniker": "CreatePage.xaml.cs",
@@ -179,12 +208,11 @@
               "RelativeToolTip": "CreatePage.xaml.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAAAYwGAAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-02T15:04:39.547Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-02T15:04:39.547Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Task.cs",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\Data\\Task.cs",
               "RelativeDocumentMoniker": "Data\\Task.cs",
@@ -196,7 +224,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "CSTrelloApp.csproj",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\CSTrelloApp.csproj",
               "RelativeDocumentMoniker": "CSTrelloApp.csproj",
@@ -204,12 +232,11 @@
               "RelativeToolTip": "CSTrelloApp.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-12-02T15:03:37.422Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-02T15:03:37.422Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "CreatePage.xaml",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\CreatePage.xaml",
               "RelativeDocumentMoniker": "CreatePage.xaml",
@@ -221,7 +248,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
@@ -233,7 +260,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
@@ -241,12 +268,11 @@
               "RelativeToolTip": "MainWindow.xaml.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAAACoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-02T14:57:35.805Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-02T14:57:35.805Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\App.xaml.cs",
               "RelativeDocumentMoniker": "App.xaml.cs",
@@ -258,7 +284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
@@ -271,7 +297,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "Package.appxmanifest",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrello\\CSTrelloApp\\Package.appxmanifest",
               "RelativeDocumentMoniker": "Package.appxmanifest",
@@ -282,7 +308,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "WindowsAppSDK-VersionInfo.cs",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\.nuget\\packages\\microsoft.windowsappsdk.runtime\\1.8.251106002\\include\\WindowsAppSDK-VersionInfo.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\.nuget\\packages\\microsoft.windowsappsdk.runtime\\1.8.251106002\\include\\WindowsAppSDK-VersionInfo.cs",
@@ -294,7 +320,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Gebruiker\\source\\repos\\CSTrelloApi\\Program.cs",
               "RelativeDocumentMoniker": "..\\..\\CSTrelloApi\\Program.cs",

@@ -91,6 +91,7 @@ namespace CSTrelloApp
             if (string.IsNullOrWhiteSpace(TaskTitle.Text))
             {
                 errorsTextBlock.Text = "Title is required for a task";
+                return;
             }
 
             var task = new Data.Task
@@ -122,7 +123,15 @@ namespace CSTrelloApp
                     string apiUrl = "http://localhost:8080/update";
                     var jsonContent = new StringContent(JsonSerializer.Serialize(task), System.Text.Encoding.UTF8, "application/json");
                     var response = await client.PostAsync(apiUrl, jsonContent);
-                    MainWindow.ContentFrame.Navigate(typeof(OverviewPage));
+                    
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MainWindow.ContentFrame.Navigate(typeof(OverviewPage));
+                    }
+                    else
+                    {
+                        errorsTextBlock.Text = "Failed to update task.";
+                    }
                 }
                 catch (HttpRequestException ex)
                 {
@@ -136,7 +145,69 @@ namespace CSTrelloApp
                 {
                     errorsTextBlock.Text = $"Unexpected error: {ex.Message}";
                 }
-                errorsTextBlock.Text = "";
+            }
+        }
+
+        private async void DeleteTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.id == 0)
+            {
+                errorsTextBlock.Text = "No task to delete.";
+                return;
+            }
+
+            ContentDialog deleteDialog = new ContentDialog
+            {
+                Title = "Delete Task",
+                Content = "Are you sure you want to delete this task? This action cannot be undone.",
+                PrimaryButtonText = "Delete",
+                CloseButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Close,
+                XamlRoot = this.XamlRoot
+            };
+
+            var result = await deleteDialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                try
+                {
+                    using var client = new HttpClient();
+                    string apiUrl = "http://localhost:8080/delete";
+                    
+                    var task = new Data.Task { Id = this.id };
+                    var jsonContent = new StringContent(JsonSerializer.Serialize(task), System.Text.Encoding.UTF8, "application/json");
+                    
+                    var request = new HttpRequestMessage
+                    {
+                        Method = HttpMethod.Delete,
+                        RequestUri = new Uri(apiUrl),
+                        Content = jsonContent
+                    };
+                    
+                    var response = await client.SendAsync(request);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MainWindow.ContentFrame.Navigate(typeof(OverviewPage));
+                    }
+                    else
+                    {
+                        errorsTextBlock.Text = "Failed to delete task.";
+                    }
+                }
+                catch (HttpRequestException ex)
+                {
+                    errorsTextBlock.Text = $"Network error: {ex.Message}";
+                }
+                catch (TaskCanceledException)
+                {
+                    errorsTextBlock.Text = "Request timed out.";
+                }
+                catch (Exception ex)
+                {
+                    errorsTextBlock.Text = $"Unexpected error: {ex.Message}";
+                }
             }
         }
     }
