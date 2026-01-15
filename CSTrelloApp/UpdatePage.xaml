@@ -39,6 +39,16 @@
                       HorizontalAlignment="Stretch"
                       Margin="0,0,0,12"/>
 
+            <ComboBox x:Name="StatusSelection"
+                      PlaceholderText="Select status"
+                      HorizontalAlignment="Stretch"
+                      Margin="0,0,0,12">
+                <ComboBoxItem Content="To Do" Tag="todo"/>
+                <ComboBoxItem Content="Doing" Tag="doing"/>
+                <ComboBoxItem Content="Review" Tag="review"/>
+                <ComboBoxItem Content="Done" Tag="done"/>
+            </ComboBox>
+            
             <Button Content="Update Task"
                     Click="UpdateTaskButton_Click"
                     HorizontalAlignment="Stretch"

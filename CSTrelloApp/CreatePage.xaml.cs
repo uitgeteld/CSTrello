@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
@@ -87,6 +88,7 @@ public sealed partial class CreatePage : Page
                     var jsonContent = new StringContent(JsonSerializer.Serialize(task), System.Text.Encoding.UTF8, "application/json");
                     var response = await client.PostAsync(apiUrl, jsonContent);
                     MainWindow.ContentFrame.Navigate(typeof(OverviewPage));
+
                 }
                 catch (HttpRequestException ex)
                 {
@@ -100,7 +102,7 @@ public sealed partial class CreatePage : Page
                 {
                     errorsTextBlock.Text = $"Unexpected error: {ex.Message}";
                 }
-                errorsTextBlock.Text = "";
+                //errorsTextBlock.Text = "";
             }
         }
     }

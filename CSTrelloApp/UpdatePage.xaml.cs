@@ -94,13 +94,21 @@ namespace CSTrelloApp
                 return;
             }
 
+            if (StatusSelection.SelectedItem == null)
+            {
+                errorsTextBlock.Text = "Status is required";
+                return;
+            }
+
+            var selectedStatus = ((ComboBoxItem)StatusSelection.SelectedItem).Tag?.ToString() ?? "todo";
+
             var task = new Data.Task
             {
                 Id = this.id,
                 Title = TaskTitle.Text,
                 Description = TaskDescription.Text,
                 AssignedTo = UserSelection.SelectedItem?.ToString() ?? "",
-                Status = "todo"
+                Status = selectedStatus
             };
 
             var validationContext = new System.ComponentModel.DataAnnotations.ValidationContext(task);
@@ -123,7 +131,7 @@ namespace CSTrelloApp
                     string apiUrl = "http://localhost:8080/update";
                     var jsonContent = new StringContent(JsonSerializer.Serialize(task), System.Text.Encoding.UTF8, "application/json");
                     var response = await client.PostAsync(apiUrl, jsonContent);
-                    
+
                     if (response.IsSuccessStatusCode)
                     {
                         MainWindow.ContentFrame.Navigate(typeof(OverviewPage));

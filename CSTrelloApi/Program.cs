@@ -89,8 +89,7 @@ namespace CSTrelloApi
                         db.Tasks.Add(task);
                         db.SaveChanges();
                         response.StatusCode = 201;
-                        continue;
-                        continue;
+                        //continue;
                     }
                     
 
